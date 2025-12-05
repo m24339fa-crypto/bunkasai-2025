@@ -1,11 +1,131 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>文化祭2025（試作）</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>○○高校 文化祭 2025</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 30px 15px;
+      text-align: center;
+    }
+
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    section h2 {
+      border-left: 6px solid #222;
+      padding-left: 10px;
+    }
+
+    .hero {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+  </style>
 </head>
 <body>
-    <h1>文化祭サイト（試作版）</h1>
-    <p>GitHub Pages の動作確認ページです。</p>
+  <header>
+    <h1>○○高校 文化祭 2025</h1>
+    <p>ようこそ文化祭公式サイトへ！</p>
+  </header>
+
+  <nav>
+    <a href="#about">概要</a>
+    <a href="#schedule">スケジュール</a>
+    <a href="#projects">企画</a>
+    <a href="#map-area">構内地図</a>
+  </nav>
+
+  <section id="about">
+    <h2>文化祭について</h2>
+    <p>ここに文化祭の説明文を書きます。</p>
+    <img src="hero.jpg" alt="メイン画像" class="hero" />
+  </section>
+
+  <section id="schedule">
+    <h2>スケジュール</h2>
+    <ul>
+      <li>09:00 開会式</li>
+      <li>10:00 クラス企画開始</li>
+      <li>12:00 ステージイベント</li>
+      <li>15:30 閉会式</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>企画一覧</h2>
+    <ul>
+      <li>1年A組：展示・ゲーム</li>
+      <li>2年B組：カフェ</li>
+      <li>3年：ステージ企画</li>
+    </ul>
+  </section>
+
+  <section id="map-area">
+    <h2>構内地図（Leaflet）</h2>
+    <p>以下に動く地図を表示します。</p>
+    <div id="map"></div>
+  </section>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    // 地図の初期表示設定（適当な位置）
+    var map = L.map('map').setView([35.0, 135.0], 17);
+
+    // タイルレイヤー
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // 仮マーカー（後で構内用に変更）
+    L.marker([35.0, 135.0]).addTo(map)
+      .bindPopup('ここに学校の位置を設定')
+      .openPopup();
+  </script>
+
 </body>
 </html>
